@@ -1,6 +1,4 @@
-# Search Box that Pulls Assets from GIPHY
-
-Search box that pulls either GIF or stickers from GIPHY
+# Boite de recherche; API GIPHY pour télécharger des GIF ou des Stickers
 
 |  |  |
 |--|--|
