@@ -1,6 +1,7 @@
 # Boite de recherche; API GIPHY pour télécharger des GIF ou des Stickers
 
-|  |  |
-|--|--|
-| <img src="img/port1.jpg" alt=""> | <img src="img/port2.jpg" alt=""> |
-| <img src="img/port3.jpg" alt=""> | <img src="img/port4.jpg" alt=""> |
+**Objectif:** maitriser les fondements des langages web; développer un fichier HTML avec ses balises; ajouter le langage CSS dans les balises du langage HTML, ajouter le langage CSS dans une balise `<style>` à même le fichier HTML ou comme fichier CSS associé au fichier HTML, employer les *tag* vs. les *class*, employer les éléments CSS avancés pour s'adapter à l'écran (*Media Queries*), les *container*, les *flexbox*, les *wrapper*, les *alignment*, développer des *navbar* flexibles; ajouter du langage JavaScript; travailler avec node.js à la console, avec Visual Studio et directement dans un navigateur; matriser le DOM, les fonctions, les sorties en console ou à l'écran, les événements et plus.
+
+| Projet intégrateur  |   |
+|:---|:---|
+| <img src="img/iwp1.gif" alt="" width="450"> | <img src="img/iwp2.gif" alt="" width="450">  |
