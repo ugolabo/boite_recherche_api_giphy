@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="TP4">
+    <meta name="keywords" content="HTML, CSS, JavaScript">
+    <meta name="author" content="Hugues Santerre">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TP4</title>
+    <style>
+        /*-tags-*/
+        /*web page*/
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: blanchedalmond;
+        }
+        /*list or placeholder for img*/
+        ul {
+            list-style-type: none;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            column-gap: 1rem;
+            row-gap: 1rem;
+            margin: 0;
+            padding: 0;
+        }
+        /*-classes-*/
+        /*input box and buttons*/
+        .section {
+            height: 120px;
+        }
+        /*input box container*/
+        .inputContainer {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            margin: 10px 15px;
+        }
+        /*input box*/
+        .inputBox {
+            padding: 5px 15px;
+            height: 20px;
+            width: 50vw;
+            max-width: 350px;
+            border: 1px solid black;
+            border-radius: 4px;
+        }
+        .inputBox:focus {
+            outline: 2px solid black;
+        }
+        /*button container*/
+        .buttonContainer {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            margin: 10px 15px;
+        }
+        /*buttons*/
+        .searchGifBtn {
+            color: white;
+            background-color: blueviolet;
+            border: none;
+            margin: 5px;
+            padding: 15px 15px;
+            text-align: center;
+            text-decoration: none;
+            font-size: 1.2em;
+            border-radius: 4px;
+        }
+        .searchGifBtn:hover {
+            background-color: violet;
+            color: black;
+        }
+
+        .searchStickerBtn {
+            color: white;
+            background-color: darkred;
+            border: none;
+            margin: 5px;
+            padding: 15px 15px;
+            text-align: center;
+            text-decoration: none;
+            font-size: 1.2em;
+            border-radius: 4px;
+        }
+        .searchStickerBtn:hover {
+            background-color: orangered;
+            color: black;
+        }
+        /*list of tiles with img*/
+        .tileList {
+            max-width: 250px;
+        }
+        /*tile of img themselves*/
+        .responsive {
+            width: 100%;
+            height: 100%;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <section class="section" action="">
+        <!--input box and buttons-->
+        <div class="inputContainer">
+            <input class="inputBox" id="inputBox" type="text" placeholder="recherche...">
+        </div>
+        <div class="buttonContainer">
+            <button class="searchGifBtn" id="searchGifBtn" type="click">Rechercher GIF</button>
+            <button class="searchStickerBtn" id="searchStickerBtn" type="click">Rechercher Stickers</button>
+        </div>
+    </section>
+    <!--search results-->
+    <h2>Résultats de la recherche</h2>
+    <!--search results-->
+    <ul class="listItems"></ul>
+    <p></p>
+    <p></p>
+
+    <script>
+        // API key and limit constants
+        const APIKey = "APIKey Here"
+        const APILimit = 5
+        // a placeholder to add tiles with images
+        // (ul is the list, li is an item of the list)
+        // the list (ul) starts empty
+        const listItemsEl = document.querySelector(".listItems")
+        // the list (ul) inherits childs or items (li)
+        // the child does exit yet
+
+        // function to define what URL to search
+        // named arrow function with 2 arguments and multiple lines
+        const searchURL = (searchInput, searchOption) => {
+            // OPTION 1 or 2
+            // (by default when the input box is empty)
+            // 1, search consonants (show nothing)
+            let fetchURL = `https://api.giphy.com/v1/${searchOption}/search?api_key=${APIKey}&limit=${APILimit}&offset=10&rating=g&lang=fr&q="qwrtpsfghjklzxcvbnm"`
+            // 2, search trending results      
+            //let fetchURL = `https://api.giphy.com/v1/${searchOption}/trending?api_key=${APIKey}&limit=${APILimit}&offset=10&rating=g&lang=fr`
+            // an HTML placeholder to show images
+            listItemsEl.innerHTML = ""
+            // search what is in the input box if there
+            // if at least a string of more than 1 characters
+            if (searchInput.length > 1) {
+                fetchURL = `https://api.giphy.com/v1/${searchOption}/search?api_key=${APIKey}&limit=${APILimit}&offset=10&rating=g&lang=fr&q="${searchInput}"`
+            }
+            // checkpoint
+            console.log(`fetch url:`, fetchURL)
+            // request the defined URL
+            // CRUD
+            // HTTP: PUT/POST, GET,    PUT/PATCH, DELETE
+            // SQL:  INSERT,   SELECT, UPDATE,    DELETE
+            fetch(fetchURL)
+                // promise to check the response from the request
+                // function with 1 argument and multiple lines
+                .then(function(response) {
+                    if (response.ok) {
+                        return response.json()
+                    }
+                })
+                // promise to gather the data from the response
+                // arrow function with 0 argument and multiple lines
+                .then(response => {
+                    let gifs_stickers = response.data
+                    //checkpoint
+                    console.log(`gifs-stickers:`, gifs_stickers)
+                    // if no results
+                    if (gifs_stickers.length === 0) {
+                        listItemsEl.innerHTML += `<li class="tileList"></li>
+                                                  <li class="tileList">
+                                                    <p class="responsive" >AUCUN RÉSULTAT!</p>
+                                                  </li>`
+                    }
+                    // apply an infinite for loop
+                    // (on all elements; whether there are 1 or 1000)
+                    gifs_stickers.forEach(gif_sti => {
+                        // replace the placeholder with new HTML
+                        listItemsEl.innerHTML += `<li class="tileList">
+                                                    <img class="responsive" src=${gif_sti.images.downsized_medium.url} alt="" >
+                                                  </li>`
+                    })
+                })
+                // promise to catch errors in the response
+                // promises are like a pipeline convoying the data
+                // from one promise to another (.then, .then, .catch)
+                .catch(error => console.log("error:", error))
+        }
+
+        // call the function (for the default search)
+        // when the page is loaded or the input box is empty even though a button is pressed
+        searchURL("", "gifs");
+        
+        // each button
+        const searchGifBtnEl = document.getElementById("searchGifBtn")
+        const searchStickerBtnEl = document.getElementById("searchStickerBtn")
+
+        // function to launch the search with the value in the input box
+        // one button searchURL(searchInput, "gifs")
+        // another button searchURL(searchInput, "stickers")
+        function searchGifBtnClick(e) {
+            // ???
+            e.preventDefault()
+            // gather what is in the input box
+            let inputBoxValueEl = document.getElementById("inputBox")
+            // checkpoint
+            console.log("input value:", inputBoxValueEl.value)
+            // call the function with the input box value
+            searchURL(inputBoxValueEl.value, "gifs")
+            // empty the input box
+            inputBoxValueEl.value = ""         
+            // checkpoint
+            console.log("input value:", inputBoxValueEl.value)
+        }
+        function searchStickerBtnClick(e) {
+            e.preventDefault()
+            let inputBoxValueEl = document.getElementById("inputBox")
+            console.log("input value:", inputBoxValueEl.value)
+            searchURL(inputBoxValueEl.value, "stickers")
+            inputBoxValueEl.value = ""
+            console.log("input value:", inputBoxValueEl.value)
+        }
+
+        // listen to any change in one button or another
+        searchGifBtnEl.addEventListener("click", searchGifBtnClick)
+        searchStickerBtnEl.addEventListener("click", searchStickerBtnClick)
+    </script>
+</body>
+</html>
