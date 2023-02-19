@@ -4,4 +4,4 @@
 
 | Projet intégrateur  |   |
 |:---|:---|
-| <img src="img/dog_cat.gif" alt="" width="450"> | <img src="img/soleil_lune.gif" alt="" width="450">  |
+| <img src="img/dog_cat.gif" alt="" width="400"> | <img src="img/soleil_lune.gif" alt="" width="400">  |
