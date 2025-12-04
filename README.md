@@ -1,9 +1,39 @@
-# Boite de recherche; API GIPHY pour télécharger des GIF ou des Stickers
+# Boite de recherche; API GIPHY
 
-**Objectif:** maitriser les fondements des langages web; développer un fichier HTML avec ses balises; ajouter le langage CSS dans les balises du langage HTML, ajouter le langage CSS dans une balise `<style>` à même le fichier HTML ou comme fichier CSS associé au fichier HTML, employer les *tag* vs. les *class*, employer les éléments CSS avancés pour s'adapter à l'écran (*Media Queries*), les *container*, les *flexbox*, les *wrapper*, les *alignment*, développer des *navbar* flexibles; ajouter du langage JavaScript; travailler avec node.js à la console, avec Visual Studio et directement dans un navigateur; maitriser le DOM, les fonctions, les sorties en console ou à l'écran, les événements; développer un API avec une clé d'authentification, extraire des données du web et plus.
+Le projet porte sur la maitrise des langages web pour construire une interface graphique. L'interface permet de télécharger des GIF et des Stickers.
 
-À noter que la clé d'authentification du projet doit être changée pour faire fonctionner l'API.
-
-| Projet intégrateur  |   |
+|   |   |
 |:---|:---|
 | <img src="img/dog_cat.gif" alt="" width="400"> | <img src="img/soleil_lune.gif" alt="" width="400">  |
+
+## Mise en place et structure
+
+La structure du projet est simple.
+
+```txt
+───boite_recherche_api_giphy
+    ├──sbg_sans_APIKey.html
+```
+
+Fonction: Le fichier HTML structure la seule page web pour extraire des données du web. Le fichier CSS ajoute le style à la page. Le CSS a été intégré au fichier HTML avec une balise `<style>`. Le JavaScript a été intégré au fichier HTML avec une balise `<script>`.
+
+Le fichier HTML **ne compte pas de clé d'API**. 
+
+Le CSS utilise principalement : tag et class, Media Queries, container, flexbox, werapper, alignment, navbar.
+
+Le JavaScript utilise principalement : DOM, fonctions, sorties sur le terminal et à l'écran (HTML, CSS, JavaScript), évènements.
+
+## Organisation du répertoire et exécution
+
+Il suffit d'installer le projet. Comme le fichier HTML ne compte pas de clé d'API ni de paramètre d'API, il faut obtenir une clé de GIPHY, puis modifier cette section du fichier HTML : 
+
+```html
+<script>
+  // API key and limit constants
+  const APIKey = "APIKey Here"
+  const APILimit = 5
+  // ...
+</script>
+```
+
+Ensuite, il suffit de lancer le fichier HTML pour ouvrir le projet dans un navigateur. Le fonctionnement de la page est intuitif.
