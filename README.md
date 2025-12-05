@@ -23,6 +23,8 @@ Le CSS utilise principalement : tag et class, Media Queries, container, flexbox,
 
 Le JavaScript utilise principalement : DOM, fonctions, sorties sur le terminal et à l'écran (HTML, CSS, JavaScript), évènements.
 
+Le projet implique node.js (dans le terminal) pour opérer sur le côté serveur (backend) et sur le côté de l'interface utilisateur dans le navigateur (frontend) et les fonctionnalités de développement du navigateur pour émuler la page lors du développement.
+
 ## Organisation du répertoire et exécution
 
 Il suffit d'installer le projet. Comme le fichier HTML ne compte pas de clé d'API ni de paramètre d'API, il faut obtenir une clé de GIPHY, puis modifier cette section du fichier HTML : 
