@@ -2,7 +2,7 @@
 
 Le projet porte sur la maitrise des langages web pour construire une interface graphique. L'interface permet de télécharger des GIF et des Stickers.
 
-| Aperçu GIF  | Aperçu Stickers  |
+| GIF  | Stickers  |
 |:---|:---|
 | <img src="img/dog_cat.gif" alt="" width="400"> | <img src="img/soleil_lune.gif" alt="" width="400">  |
 
