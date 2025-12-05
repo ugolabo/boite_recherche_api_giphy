@@ -4,7 +4,7 @@ Le projet porte sur la maitrise des langages web pour construire une interface g
 
 | Aperçu 1  | Aperçu 2  |
 |:---|:---|
-| <img src="img/dog_cat.gif" alt="" width="400"> | <img src="img/soleil_lune.gif" alt="" width="400">  |
+| <img src="img/dog_cat.gif" alt="" > | <img src="img/soleil_lune.gif" alt="" >  |
 
 ## Mise en place et structure
 
